@@ -1,6 +1,6 @@
 const API = window.location.hostname === "localhost"
   ? "http://127.0.0.1:8000"
-  : "https://your-backend-url.onrender.com";  // change when deployed
+  : "https://web-production-cd881.up.railway.app";
 
 let currentMode = "smart";
 
