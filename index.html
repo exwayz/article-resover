@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Era Name Resolver</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;600;700&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1>WAR ERA <span class="accent">NAME RESOLVER</span></h1>
+        <p class="subtitle" id="info-line">loading entities...</p>
+      </div>
+      <div class="header-right">
+        <div class="mode-toggle">
+          <button class="mode-btn active" data-mode="smart" id="btn-smart">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.5 4.5-3 6-1 1-2 2.5-2 4h-4c0-1.5-1-3-2-4-1.5-1.5-3-3.5-3-6a7 7 0 0 1 7-7z"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+            Smart
+          </button>
+          <button class="mode-btn" data-mode="naive" id="btn-naive">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Naive
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="separator"></div>
+
+    <!-- Input -->
+    <section class="section">
+      <label class="section-label">PASTE PLAIN TEXT</label>
+      <div class="textarea-wrap">
+        <textarea id="input-text" placeholder="Paste your text here...&#10;&#10;Country, region, alliance, party, and MU names will be resolved into URLs." spellcheck="false"></textarea>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn btn-resolve" id="btn-resolve">
+        <span class="btn-text">RESOLVE</span>
+        <span class="btn-arrow">&rarr;</span>
+      </button>
+      <button class="btn btn-clear" id="btn-clear">CLEAR</button>
+      <div class="status" id="status"></div>
+    </div>
+
+    <!-- Output -->
+    <section class="section">
+      <label class="section-label">RESOLVED OUTPUT</label>
+      <div class="textarea-wrap">
+        <textarea id="output-text" readonly placeholder="Resolved output will appear here..."></textarea>
+      </div>
+    </section>
+
+    <!-- Copy -->
+    <div class="copy-row">
+      <button class="btn btn-copy" id="btn-copy">COPY OUTPUT</button>
+      <span class="copy-status" id="copy-status"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
