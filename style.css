@@ -32,6 +32,8 @@ html, body {
   font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ── App shell ─────────────────────────────────────────────────── */
@@ -51,12 +53,17 @@ html, body {
   flex-wrap: wrap;
 }
 
+.header-left {
+  min-width: 0;
+}
+
 .header h1 {
   font-size: 22px;
   font-weight: 700;
   color: var(--fg);
   letter-spacing: 1px;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 .header h1 .accent {
@@ -67,6 +74,7 @@ html, body {
   font-size: 12px;
   color: var(--fg-dim);
   margin-top: 2px;
+  word-break: break-word;
 }
 
 /* ── Mode toggle ───────────────────────────────────────────────── */
@@ -77,6 +85,7 @@ html, body {
   border-radius: var(--radius);
   padding: 3px;
   border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .mode-btn {
@@ -84,6 +93,7 @@ html, body {
   align-items: center;
   gap: 5px;
   padding: 6px 14px;
+  min-height: 32px;
   border: none;
   border-radius: var(--radius-sm);
   background: transparent;
@@ -93,6 +103,9 @@ html, body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .mode-btn:hover {
@@ -176,8 +189,10 @@ textarea#output-text {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 8px 20px;
+  min-height: 40px;
   border: none;
   border-radius: var(--radius-sm);
   font-family: var(--font-ui);
@@ -186,6 +201,8 @@ textarea#output-text {
   cursor: pointer;
   transition: all 0.15s ease;
   letter-spacing: 0.3px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .btn-resolve {
@@ -242,6 +259,13 @@ textarea#output-text {
   20% { transform: scaleY(1.0); }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .spinner > div {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
 .btn-clear {
   background: var(--bg-input);
   color: var(--fg-dim);
@@ -269,6 +293,8 @@ textarea#output-text {
   margin-left: auto;
   font-size: 12px;
   color: var(--fg-dim);
+  min-width: 0;
+  word-break: break-word;
 }
 
 .status.resolved {
@@ -282,6 +308,7 @@ textarea#output-text {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .copy-status {
@@ -291,20 +318,134 @@ textarea#output-text {
   transition: opacity 0.3s;
 }
 
-/* ── Responsive ────────────────────────────────────────────────── */
+/* ── Tablet (≤768px) ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app {
+    padding: 16px 16px 28px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+}
+
+/* ── Mobile (≤640px) ──────────────────────────────────────────── */
 @media (max-width: 640px) {
   .app {
-    padding: 12px 14px 24px;
+    padding: 12px 12px 24px;
   }
+
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 10px;
   }
+
   .header h1 {
     font-size: 18px;
   }
+
+  .mode-toggle {
+    align-self: flex-start;
+  }
+
+  .textarea-wrap {
+    border-radius: var(--radius);
+  }
+
+  textarea {
+    min-height: 140px;
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .btn-resolve {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .btn-clear {
+    flex-shrink: 0;
+  }
+
+  .status {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 11px;
+  }
+
+  .copy-row {
+    gap: 8px;
+  }
+
+  .btn-copy {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* ── Small phone (≤380px) ─────────────────────────────────────── */
+@media (max-width: 380px) {
+  .app {
+    padding: 10px 10px 20px;
+  }
+
+  .header h1 {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+  }
+
+  .mode-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
   textarea {
     min-height: 120px;
     font-size: 12px;
+  }
+
+  .btn {
+    min-height: 44px;
+    font-size: 13px;
+  }
+}
+
+/* ── Landscape phone ──────────────────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  textarea {
+    min-height: 100px;
+  }
+}
+
+/* ── Safe area (notched phones) ────────────────────────────────── */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .app {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
+/* ── Touch focus visible ───────────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  .btn:focus-visible,
+  .mode-btn:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
   }
 }
