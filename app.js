@@ -1,6 +1,6 @@
 const API = window.location.hostname === "localhost"
   ? "http://127.0.0.1:8000"
-  : "https://web-production-cd881.up.railway.app";
+  : "https://resolver-server.vercel.app";
 
 let currentMode = "smart";
 
