@@ -12,6 +12,7 @@ const btnClear     = document.getElementById("btn-clear");
 const btnCopy      = document.getElementById("btn-copy");
 const btnSmart     = document.getElementById("btn-smart");
 const btnNaive     = document.getElementById("btn-naive");
+const spinner      = document.getElementById("spinner");
 const status       = document.getElementById("status");
 const copyStatus   = document.getElementById("copy-status");
 const infoLine     = document.getElementById("info-line");
@@ -66,6 +67,7 @@ async function doResolve() {
   }
 
   btnResolve.classList.add("loading");
+  spinner.style.display = "inline-flex";
   status.textContent = currentMode === "smart" ? "resolving with AI..." : "resolving...";
   status.className = "status";
 
@@ -97,6 +99,7 @@ async function doResolve() {
     status.style.color = "#d32f2f";
   } finally {
     btnResolve.classList.remove("loading");
+    spinner.style.display = "none";
   }
 }
 
@@ -107,6 +110,8 @@ btnClear.addEventListener("click", () => {
   status.textContent = "";
   status.className = "status";
   copyStatus.textContent = "";
+  spinner.style.display = "none";
+  btnResolve.classList.remove("loading");
 });
 
 // ── Copy ────────────────────────────────────────────────────────
