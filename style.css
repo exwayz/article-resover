@@ -460,26 +460,18 @@ textarea#output-text {
 
 /* Ensure content doesn't hide behind fixed bottom bar */
 body {
-  padding-bottom: 36px;
+  padding-bottom: 0;
 }
 
 /* ── Bottom bar ───────────────────────────────────────────────── */
 .bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   text-align: center;
   padding: 6px 16px;
-  background-color: var(--bg);
   border-top: 1px solid var(--border);
   font-size: 11px;
   color: var(--fg-muted);
-  z-index: 100;
   font-family: var(--font-mono);
   letter-spacing: 0.3px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .bottom-bar a {
