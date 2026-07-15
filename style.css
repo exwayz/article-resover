@@ -113,11 +113,11 @@ html, body {
 
 .mode-btn:hover {
   color: var(--fg);
-  background: var(--bg-hover);
+  background-color: var(--bg-hover);
 }
 
 .mode-btn.active {
-  background: var(--red);
+  background-color: var(--red);
   color: #fff;
   box-shadow: 0 0 12px var(--red-glow);
 }
@@ -206,32 +206,16 @@ textarea#output-text {
   letter-spacing: 0.3px;
   -webkit-user-select: none;
   user-select: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.24' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
-
-.btn {
-  position: relative;
-  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.18' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .btn-resolve {
-  background: var(--red);
+  background-color: var(--red);
   color: #fff;
 }
 
 .btn-resolve:hover {
-  background: var(--red-hover);
+  background-color: var(--red-hover);
   box-shadow: 0 2px 16px var(--red-glow);
 }
 
@@ -287,37 +271,37 @@ textarea#output-text {
 }
 
 .btn-clear {
-  background: var(--bg-input);
+  background-color: var(--bg-input);
   color: var(--fg-dim);
   border: 1px solid var(--border);
 }
 
 .btn-clear:hover {
   color: var(--fg);
-  background: var(--bg-hover);
+  background-color: var(--bg-hover);
   border-color: var(--fg-muted);
 }
 
 .btn-copy {
-  background: var(--bg-input);
+  background-color: var(--bg-input);
   color: var(--fg);
   border: 1px solid var(--border);
 }
 
 .btn-copy:hover {
-  background: var(--bg-hover);
+  background-color: var(--bg-hover);
   border-color: var(--fg-muted);
 }
 
 .btn-editor {
-  background: var(--bg-input);
+  background-color: var(--bg-input);
   color: var(--red);
   border: 1px solid var(--red-dim);
   text-decoration: none;
 }
 
 .btn-editor:hover {
-  background: var(--red-dim);
+  background-color: var(--red-dim);
   color: #fff;
   border-color: var(--red);
 }
