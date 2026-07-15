@@ -27,7 +27,10 @@
 
 html, body {
   height: 100%;
-  background: var(--bg);
+  background-color: #121212;
+  background-image: url("bg-pattern.svg");
+  background-repeat: repeat;
+  background-size: 1800px 900px;
   color: var(--fg);
   font-family: var(--font-ui);
   font-size: 14px;
@@ -211,10 +214,8 @@ textarea#output-text {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0),
-    radial-gradient(circle at 3px 3px, rgba(0,0,0,0.2) 1px, transparent 0);
-  background-size: 4px 4px;
+  background-color: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.24' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
   border-radius: inherit;
 }

@@ -1,0 +1,536 @@
+<svg width="1800" height="900" viewBox="0 0 1800 900" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .th { stroke: #e5e5e5; stroke-width: 1; fill: none; }
+  </style>
+  <defs>
+    <filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="f2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="f3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+      <stop offset="10%" stop-color="#e5e5e5"/>
+      <stop offset="100%" stop-color="#e5e5e5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rg2" cx="50%" cy="50%" r="50%">
+      <stop offset="10%" stop-color="#e5e5e5"/>
+      <stop offset="100%" stop-color="#e5e5e5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Top-left cluster -->
+  <g class="th" opacity="0.35" filter="url(#f1)">
+    <polygon points="500,33 597,90 597,204 500,261 403,204 403,90"/>
+    <polygon points="258,172 355,229 355,343 258,400 161,343 161,229"/>
+    <line x1="546" y1="249" x2="641" y2="304"/>
+    <line x1="653" y1="156" x2="756" y2="215"/>
+    <line x1="445" y1="54" x2="345" y2="-3"/>
+    <circle cx="548" cy="147" r="6"/>
+    <circle cx="500" cy="147" r="6"/>
+    <circle cx="452" cy="147" r="6"/>
+    <circle cx="609" cy="119" r="6"/>
+    <circle cx="598" cy="147" r="6"/>
+    <circle cx="598" cy="175" r="6"/>
+    <circle cx="561" cy="101" r="6"/>
+    <circle cx="538" cy="87" r="6"/>
+    <circle cx="515" cy="74" r="6"/>
+    <circle cx="485" cy="74" r="6"/>
+    <circle cx="462" cy="87" r="6"/>
+    <circle cx="439" cy="101" r="6"/>
+    <circle cx="402" cy="119" r="6"/>
+    <circle cx="403" cy="147" r="6"/>
+    <circle cx="403" cy="175" r="6"/>
+    <circle cx="306" cy="282" r="6"/>
+    <circle cx="307" cy="310" r="6"/>
+    <circle cx="209" cy="254" r="6"/>
+    <circle cx="210" cy="282" r="6"/>
+    <circle cx="210" cy="310" r="6"/>
+    <circle cx="210" cy="338" r="6"/>
+    <circle cx="210" cy="366" r="6"/>
+    <circle cx="259" cy="254" r="6"/>
+    <circle cx="258" cy="282" r="6"/>
+    <circle cx="258" cy="310" r="6"/>
+    <circle cx="258" cy="338" r="6"/>
+    <circle cx="258" cy="366" r="6"/>
+    <line x1="403" y1="147" x2="306" y2="310"/>
+    <line x1="598" y1="147" x2="695" y2="-2"/>
+    <line x1="500" y1="261" x2="500" y2="354"/>
+    <line x1="403" y1="204" x2="306" y2="282"/>
+    <line x1="597" y1="204" x2="695" y2="127"/>
+    <line x1="306" y1="310" x2="306" y2="426"/>
+    <line x1="307" y1="202" x2="306" y2="310"/>
+    <line x1="210" y1="282" x2="112" y2="358"/>
+    <line x1="258" y1="400" x2="258" y2="516"/>
+    <line x1="210" y1="421" x2="112" y2="497"/>
+    <line x1="355" y1="282" x2="452" y2="206"/>
+    <line x1="355" y1="343" x2="452" y2="267"/>
+    <line x1="452" y1="147" x2="548" y2="71"/>
+    <line x1="548" y1="147" x2="645" y2="71"/>
+  </g>
+
+  <!-- Top-center cluster -->
+  <g class="th" opacity="0.28" filter="url(#f2)">
+    <polygon points="1102,33 1199,90 1199,204 1102,261 1005,204 1005,90"/>
+    <polygon points="860,172 957,229 957,343 860,400 763,343 763,229"/>
+    <line x1="1148" y1="249" x2="1243" y2="304"/>
+    <line x1="1255" y1="156" x2="1358" y2="215"/>
+    <line x1="1047" y1="54" x2="947" y2="-3"/>
+    <circle cx="1150" cy="147" r="6"/>
+    <circle cx="1102" cy="147" r="6"/>
+    <circle cx="1054" cy="147" r="6"/>
+    <circle cx="1211" cy="119" r="6"/>
+    <circle cx="1200" cy="147" r="6"/>
+    <circle cx="1200" cy="175" r="6"/>
+    <circle cx="1163" cy="101" r="6"/>
+    <circle cx="1140" cy="87" r="6"/>
+    <circle cx="1117" cy="74" r="6"/>
+    <circle cx="1087" cy="74" r="6"/>
+    <circle cx="1064" cy="87" r="6"/>
+    <circle cx="1041" cy="101" r="6"/>
+    <circle cx="1004" cy="119" r="6"/>
+    <circle cx="1005" cy="147" r="6"/>
+    <circle cx="1005" cy="175" r="6"/>
+    <circle cx="908" cy="282" r="6"/>
+    <circle cx="909" cy="310" r="6"/>
+    <circle cx="811" cy="254" r="6"/>
+    <circle cx="812" cy="282" r="6"/>
+    <circle cx="812" cy="310" r="6"/>
+    <circle cx="812" cy="338" r="6"/>
+    <circle cx="812" cy="366" r="6"/>
+    <circle cx="861" cy="254" r="6"/>
+    <circle cx="860" cy="282" r="6"/>
+    <circle cx="860" cy="310" r="6"/>
+    <circle cx="860" cy="338" r="6"/>
+    <circle cx="860" cy="366" r="6"/>
+    <line x1="1005" y1="147" x2="908" y2="310"/>
+    <line x1="1200" y1="147" x2="1297" y2="-2"/>
+    <line x1="1102" y1="261" x2="1102" y2="354"/>
+    <line x1="1005" y1="204" x2="908" y2="282"/>
+    <line x1="1199" y1="204" x2="1297" y2="127"/>
+    <line x1="908" y1="310" x2="908" y2="426"/>
+    <line x1="909" y1="202" x2="908" y2="310"/>
+    <line x1="812" y1="282" x2="714" y2="358"/>
+    <line x1="860" y1="400" x2="860" y2="516"/>
+    <line x1="812" y1="421" x2="714" y2="497"/>
+    <line x1="957" y1="282" x2="1054" y2="206"/>
+    <line x1="957" y1="343" x2="1054" y2="267"/>
+    <line x1="1054" y1="147" x2="1150" y2="71"/>
+    <line x1="1150" y1="147" x2="1247" y2="71"/>
+  </g>
+
+  <!-- Top-right cluster -->
+  <g class="th" opacity="0.35" filter="url(#f1)">
+    <polygon points="1704,33 1801,90 1801,204 1704,261 1607,204 1607,90"/>
+    <polygon points="1462,172 1559,229 1559,343 1462,400 1365,343 1365,229"/>
+    <line x1="1750" y1="249" x2="1845" y2="304"/>
+    <line x1="1857" y1="156" x2="1800" y2="215"/>
+    <line x1="1649" y1="54" x2="1549" y2="-3"/>
+    <circle cx="1752" cy="147" r="6"/>
+    <circle cx="1704" cy="147" r="6"/>
+    <circle cx="1656" cy="147" r="6"/>
+    <circle cx="1813" cy="119" r="6"/>
+    <circle cx="1802" cy="147" r="6"/>
+    <circle cx="1802" cy="175" r="6"/>
+    <circle cx="1765" cy="101" r="6"/>
+    <circle cx="1742" cy="87" r="6"/>
+    <circle cx="1719" cy="74" r="6"/>
+    <circle cx="1689" cy="74" r="6"/>
+    <circle cx="1666" cy="87" r="6"/>
+    <circle cx="1643" cy="101" r="6"/>
+    <circle cx="1606" cy="119" r="6"/>
+    <circle cx="1607" cy="147" r="6"/>
+    <circle cx="1607" cy="175" r="6"/>
+    <circle cx="1510" cy="282" r="6"/>
+    <circle cx="1511" cy="310" r="6"/>
+    <circle cx="1413" cy="254" r="6"/>
+    <circle cx="1414" cy="282" r="6"/>
+    <circle cx="1414" cy="310" r="6"/>
+    <circle cx="1414" cy="338" r="6"/>
+    <circle cx="1414" cy="366" r="6"/>
+    <circle cx="1463" cy="254" r="6"/>
+    <circle cx="1462" cy="282" r="6"/>
+    <circle cx="1462" cy="310" r="6"/>
+    <circle cx="1462" cy="338" r="6"/>
+    <circle cx="1462" cy="366" r="6"/>
+    <line x1="1607" y1="147" x2="1510" y2="310"/>
+    <line x1="1802" y1="147" x2="1800" y2="-2"/>
+    <line x1="1704" y1="261" x2="1704" y2="354"/>
+    <line x1="1607" y1="204" x2="1510" y2="282"/>
+    <line x1="1801" y1="204" x2="1800" y2="127"/>
+    <line x1="1510" y1="310" x2="1510" y2="426"/>
+    <line x1="1511" y1="202" x2="1510" y2="310"/>
+    <line x1="1414" y1="282" x2="1316" y2="358"/>
+    <line x1="1462" y1="400" x2="1462" y2="516"/>
+    <line x1="1414" y1="421" x2="1316" y2="497"/>
+    <line x1="1559" y1="282" x2="1656" y2="206"/>
+    <line x1="1559" y1="343" x2="1656" y2="267"/>
+    <line x1="1656" y1="147" x2="1752" y2="71"/>
+    <line x1="1752" y1="147" x2="1800" y2="71"/>
+  </g>
+
+  <!-- Middle-left cluster -->
+  <g class="th" opacity="0.28" filter="url(#f2)">
+    <polygon points="500,333 597,390 597,504 500,561 403,504 403,390"/>
+    <polygon points="258,472 355,529 355,643 258,700 161,643 161,529"/>
+    <line x1="546" y1="549" x2="641" y2="604"/>
+    <line x1="653" y1="456" x2="756" y2="515"/>
+    <line x1="445" y1="354" x2="345" y2="297"/>
+    <circle cx="548" cy="447" r="6"/>
+    <circle cx="500" cy="447" r="6"/>
+    <circle cx="452" cy="447" r="6"/>
+    <circle cx="609" cy="419" r="6"/>
+    <circle cx="598" cy="447" r="6"/>
+    <circle cx="598" cy="475" r="6"/>
+    <circle cx="561" cy="401" r="6"/>
+    <circle cx="538" cy="387" r="6"/>
+    <circle cx="515" cy="374" r="6"/>
+    <circle cx="485" cy="374" r="6"/>
+    <circle cx="462" cy="387" r="6"/>
+    <circle cx="439" cy="401" r="6"/>
+    <circle cx="402" cy="419" r="6"/>
+    <circle cx="403" cy="447" r="6"/>
+    <circle cx="403" cy="475" r="6"/>
+    <circle cx="306" cy="582" r="6"/>
+    <circle cx="307" cy="610" r="6"/>
+    <circle cx="209" cy="554" r="6"/>
+    <circle cx="210" cy="582" r="6"/>
+    <circle cx="210" cy="610" r="6"/>
+    <circle cx="210" cy="638" r="6"/>
+    <circle cx="210" cy="666" r="6"/>
+    <circle cx="259" cy="554" r="6"/>
+    <circle cx="258" cy="582" r="6"/>
+    <circle cx="258" cy="610" r="6"/>
+    <circle cx="258" cy="638" r="6"/>
+    <circle cx="258" cy="666" r="6"/>
+    <line x1="403" y1="447" x2="306" y2="610"/>
+    <line x1="598" y1="447" x2="695" y2="302"/>
+    <line x1="500" y1="561" x2="500" y2="654"/>
+    <line x1="403" y1="504" x2="306" y2="582"/>
+    <line x1="597" y1="504" x2="695" y2="427"/>
+    <line x1="306" y1="610" x2="306" y2="726"/>
+    <line x1="307" y1="502" x2="306" y2="610"/>
+    <line x1="210" y1="582" x2="112" y2="658"/>
+    <line x1="258" y1="700" x2="258" y2="816"/>
+    <line x1="210" y1="721" x2="112" y2="797"/>
+    <line x1="355" y1="582" x2="452" y2="506"/>
+    <line x1="355" y1="643" x2="452" y2="567"/>
+    <line x1="452" y1="447" x2="548" y2="371"/>
+    <line x1="548" y1="447" x2="645" y2="371"/>
+  </g>
+
+  <!-- Middle-center cluster -->
+  <g class="th" opacity="0.35" filter="url(#f1)">
+    <polygon points="1102,333 1199,390 1199,504 1102,561 1005,504 1005,390"/>
+    <polygon points="860,472 957,529 957,643 860,700 763,643 763,529"/>
+    <line x1="1148" y1="549" x2="1243" y2="604"/>
+    <line x1="1255" y1="456" x2="1358" y2="515"/>
+    <line x1="1047" y1="354" x2="947" y2="297"/>
+    <circle cx="1150" cy="447" r="6"/>
+    <circle cx="1102" cy="447" r="6"/>
+    <circle cx="1054" cy="447" r="6"/>
+    <circle cx="1211" cy="419" r="6"/>
+    <circle cx="1200" cy="447" r="6"/>
+    <circle cx="1200" cy="475" r="6"/>
+    <circle cx="1163" cy="401" r="6"/>
+    <circle cx="1140" cy="387" r="6"/>
+    <circle cx="1117" cy="374" r="6"/>
+    <circle cx="1087" cy="374" r="6"/>
+    <circle cx="1064" cy="387" r="6"/>
+    <circle cx="1041" cy="401" r="6"/>
+    <circle cx="1004" cy="419" r="6"/>
+    <circle cx="1005" cy="447" r="6"/>
+    <circle cx="1005" cy="475" r="6"/>
+    <circle cx="908" cy="582" r="6"/>
+    <circle cx="909" cy="610" r="6"/>
+    <circle cx="811" cy="554" r="6"/>
+    <circle cx="812" cy="582" r="6"/>
+    <circle cx="812" cy="610" r="6"/>
+    <circle cx="812" cy="638" r="6"/>
+    <circle cx="812" cy="666" r="6"/>
+    <circle cx="861" cy="554" r="6"/>
+    <circle cx="860" cy="582" r="6"/>
+    <circle cx="860" cy="610" r="6"/>
+    <circle cx="860" cy="638" r="6"/>
+    <circle cx="860" cy="666" r="6"/>
+    <line x1="1005" y1="447" x2="908" y2="610"/>
+    <line x1="1200" y1="447" x2="1297" y2="302"/>
+    <line x1="1102" y1="561" x2="1102" y2="654"/>
+    <line x1="1005" y1="504" x2="908" y2="582"/>
+    <line x1="1199" y1="504" x2="1297" y2="427"/>
+    <line x1="908" y1="610" x2="908" y2="726"/>
+    <line x1="909" y1="502" x2="908" y2="610"/>
+    <line x1="812" y1="582" x2="714" y2="658"/>
+    <line x1="860" y1="700" x2="860" y2="816"/>
+    <line x1="812" y1="721" x2="714" y2="797"/>
+    <line x1="957" y1="582" x2="1054" y2="506"/>
+    <line x1="957" y1="643" x2="1054" y2="567"/>
+    <line x1="1054" y1="447" x2="1150" y2="371"/>
+    <line x1="1150" y1="447" x2="1247" y2="371"/>
+  </g>
+
+  <!-- Middle-right cluster -->
+  <g class="th" opacity="0.28" filter="url(#f2)">
+    <polygon points="1704,333 1801,390 1801,504 1704,561 1607,504 1607,390"/>
+    <polygon points="1462,472 1559,529 1559,643 1462,700 1365,643 1365,529"/>
+    <line x1="1750" y1="549" x2="1845" y2="604"/>
+    <line x1="1857" y1="456" x2="1800" y2="515"/>
+    <line x1="1649" y1="354" x2="1549" y2="297"/>
+    <circle cx="1752" cy="447" r="6"/>
+    <circle cx="1704" cy="447" r="6"/>
+    <circle cx="1656" cy="447" r="6"/>
+    <circle cx="1813" cy="419" r="6"/>
+    <circle cx="1802" cy="447" r="6"/>
+    <circle cx="1802" cy="475" r="6"/>
+    <circle cx="1765" cy="401" r="6"/>
+    <circle cx="1742" cy="387" r="6"/>
+    <circle cx="1719" cy="374" r="6"/>
+    <circle cx="1689" cy="374" r="6"/>
+    <circle cx="1666" cy="387" r="6"/>
+    <circle cx="1643" cy="401" r="6"/>
+    <circle cx="1606" cy="419" r="6"/>
+    <circle cx="1607" cy="447" r="6"/>
+    <circle cx="1607" cy="475" r="6"/>
+    <circle cx="1510" cy="582" r="6"/>
+    <circle cx="1511" cy="610" r="6"/>
+    <circle cx="1413" cy="554" r="6"/>
+    <circle cx="1414" cy="582" r="6"/>
+    <circle cx="1414" cy="610" r="6"/>
+    <circle cx="1414" cy="638" r="6"/>
+    <circle cx="1414" cy="666" r="6"/>
+    <circle cx="1463" cy="554" r="6"/>
+    <circle cx="1462" cy="582" r="6"/>
+    <circle cx="1462" cy="610" r="6"/>
+    <circle cx="1462" cy="638" r="6"/>
+    <circle cx="1462" cy="666" r="6"/>
+    <line x1="1607" y1="447" x2="1510" y2="610"/>
+    <line x1="1802" y1="447" x2="1800" y2="302"/>
+    <line x1="1704" y1="561" x2="1704" y2="654"/>
+    <line x1="1607" y1="504" x2="1510" y2="582"/>
+    <line x1="1801" y1="504" x2="1800" y2="427"/>
+    <line x1="1510" y1="610" x2="1510" y2="726"/>
+    <line x1="1511" y1="502" x2="1510" y2="610"/>
+    <line x1="1414" y1="582" x2="1316" y2="658"/>
+    <line x1="1462" y1="700" x2="1462" y2="816"/>
+    <line x1="1414" y1="721" x2="1316" y2="797"/>
+    <line x1="1559" y1="582" x2="1656" y2="506"/>
+    <line x1="1559" y1="643" x2="1656" y2="567"/>
+    <line x1="1656" y1="447" x2="1752" y2="371"/>
+    <line x1="1752" y1="447" x2="1800" y2="371"/>
+  </g>
+
+  <!-- Bottom-left cluster -->
+  <g class="th" opacity="0.28" filter="url(#f2)">
+    <polygon points="500,633 597,690 597,804 500,861 403,804 403,690"/>
+    <polygon points="258,772 355,829 355,943 258,1000 161,943 161,829"/>
+    <line x1="546" y1="849" x2="641" y2="904"/>
+    <line x1="653" y1="756" x2="756" y2="815"/>
+    <line x1="445" y1="654" x2="345" y2="597"/>
+    <circle cx="548" cy="747" r="6"/>
+    <circle cx="500" cy="747" r="6"/>
+    <circle cx="452" cy="747" r="6"/>
+    <circle cx="609" cy="719" r="6"/>
+    <circle cx="598" cy="747" r="6"/>
+    <circle cx="598" cy="775" r="6"/>
+    <circle cx="561" cy="701" r="6"/>
+    <circle cx="538" cy="687" r="6"/>
+    <circle cx="515" cy="674" r="6"/>
+    <circle cx="485" cy="674" r="6"/>
+    <circle cx="462" cy="687" r="6"/>
+    <circle cx="439" cy="701" r="6"/>
+    <circle cx="402" cy="719" r="6"/>
+    <circle cx="403" cy="747" r="6"/>
+    <circle cx="403" cy="775" r="6"/>
+    <circle cx="306" cy="882" r="6"/>
+    <circle cx="307" cy="910" r="6"/>
+    <circle cx="209" cy="854" r="6"/>
+    <circle cx="210" cy="882" r="6"/>
+    <circle cx="210" cy="910" r="6"/>
+    <circle cx="210" cy="938" r="6"/>
+    <circle cx="210" cy="966" r="6"/>
+    <circle cx="259" cy="854" r="6"/>
+    <circle cx="258" cy="882" r="6"/>
+    <circle cx="258" cy="910" r="6"/>
+    <circle cx="258" cy="938" r="6"/>
+    <circle cx="258" cy="966" r="6"/>
+    <line x1="403" y1="747" x2="306" y2="910"/>
+    <line x1="598" y1="747" x2="695" y2="602"/>
+    <line x1="500" y1="861" x2="500" y2="954"/>
+    <line x1="403" y1="804" x2="306" y2="882"/>
+    <line x1="597" y1="804" x2="695" y2="727"/>
+    <line x1="306" y1="910" x2="306" y2="1026"/>
+    <line x1="307" y1="802" x2="306" y2="910"/>
+    <line x1="210" y1="882" x2="112" y2="958"/>
+    <line x1="258" y1="1000" x2="258" y2="1116"/>
+    <line x1="210" y1="1021" x2="112" y2="1097"/>
+    <line x1="355" y1="882" x2="452" y2="806"/>
+    <line x1="355" y1="943" x2="452" y2="867"/>
+    <line x1="452" y1="747" x2="548" y2="671"/>
+    <line x1="548" y1="747" x2="645" y2="671"/>
+  </g>
+
+  <!-- Bottom-center cluster -->
+  <g class="th" opacity="0.35" filter="url(#f1)">
+    <polygon points="1102,633 1199,690 1199,804 1102,861 1005,804 1005,690"/>
+    <polygon points="860,772 957,829 957,943 860,1000 763,943 763,829"/>
+    <line x1="1148" y1="849" x2="1243" y2="904"/>
+    <line x1="1255" y1="756" x2="1358" y2="815"/>
+    <line x1="1047" y1="654" x2="947" y2="597"/>
+    <circle cx="1150" cy="747" r="6"/>
+    <circle cx="1102" cy="747" r="6"/>
+    <circle cx="1054" cy="747" r="6"/>
+    <circle cx="1211" cy="719" r="6"/>
+    <circle cx="1200" cy="747" r="6"/>
+    <circle cx="1200" cy="775" r="6"/>
+    <circle cx="1163" cy="701" r="6"/>
+    <circle cx="1140" cy="687" r="6"/>
+    <circle cx="1117" cy="674" r="6"/>
+    <circle cx="1087" cy="674" r="6"/>
+    <circle cx="1064" cy="687" r="6"/>
+    <circle cx="1041" cy="701" r="6"/>
+    <circle cx="1004" cy="719" r="6"/>
+    <circle cx="1005" cy="747" r="6"/>
+    <circle cx="1005" cy="775" r="6"/>
+    <circle cx="908" cy="882" r="6"/>
+    <circle cx="909" cy="910" r="6"/>
+    <circle cx="811" cy="854" r="6"/>
+    <circle cx="812" cy="882" r="6"/>
+    <circle cx="812" cy="910" r="6"/>
+    <circle cx="812" cy="938" r="6"/>
+    <circle cx="812" cy="966" r="6"/>
+    <circle cx="861" cy="854" r="6"/>
+    <circle cx="860" cy="882" r="6"/>
+    <circle cx="860" cy="910" r="6"/>
+    <circle cx="860" cy="938" r="6"/>
+    <circle cx="860" cy="966" r="6"/>
+    <line x1="1005" y1="747" x2="908" y2="910"/>
+    <line x1="1200" y1="747" x2="1297" y2="602"/>
+    <line x1="1102" y1="861" x2="1102" y2="954"/>
+    <line x1="1005" y1="804" x2="908" y2="882"/>
+    <line x1="1199" y1="804" x2="1297" y2="727"/>
+    <line x1="908" y1="910" x2="908" y2="1026"/>
+    <line x1="909" y1="802" x2="908" y2="910"/>
+    <line x1="812" y1="882" x2="714" y2="958"/>
+    <line x1="860" y1="1000" x2="860" y2="1116"/>
+    <line x1="812" y1="1021" x2="714" y2="1097"/>
+    <line x1="957" y1="882" x2="1054" y2="806"/>
+    <line x1="957" y1="943" x2="1054" y2="867"/>
+    <line x1="1054" y1="747" x2="1150" y2="671"/>
+    <line x1="1150" y1="747" x2="1247" y2="671"/>
+  </g>
+
+  <!-- Bottom-right cluster -->
+  <g class="th" opacity="0.28" filter="url(#f2)">
+    <polygon points="1704,633 1801,690 1801,804 1704,861 1607,804 1607,690"/>
+    <polygon points="1462,772 1559,829 1559,943 1462,1000 1365,943 1365,829"/>
+    <line x1="1750" y1="849" x2="1845" y2="904"/>
+    <line x1="1857" y1="756" x2="1800" y2="815"/>
+    <line x1="1649" y1="654" x2="1549" y2="597"/>
+    <circle cx="1752" cy="747" r="6"/>
+    <circle cx="1704" cy="747" r="6"/>
+    <circle cx="1656" cy="747" r="6"/>
+    <circle cx="1813" cy="719" r="6"/>
+    <circle cx="1802" cy="747" r="6"/>
+    <circle cx="1802" cy="775" r="6"/>
+    <circle cx="1765" cy="701" r="6"/>
+    <circle cx="1742" cy="687" r="6"/>
+    <circle cx="1719" cy="674" r="6"/>
+    <circle cx="1689" cy="674" r="6"/>
+    <circle cx="1666" cy="687" r="6"/>
+    <circle cx="1643" cy="701" r="6"/>
+    <circle cx="1606" cy="719" r="6"/>
+    <circle cx="1607" cy="747" r="6"/>
+    <circle cx="1607" cy="775" r="6"/>
+    <circle cx="1510" cy="882" r="6"/>
+    <circle cx="1511" cy="910" r="6"/>
+    <circle cx="1413" cy="854" r="6"/>
+    <circle cx="1414" cy="882" r="6"/>
+    <circle cx="1414" cy="910" r="6"/>
+    <circle cx="1414" cy="938" r="6"/>
+    <circle cx="1414" cy="966" r="6"/>
+    <circle cx="1463" cy="854" r="6"/>
+    <circle cx="1462" cy="882" r="6"/>
+    <circle cx="1462" cy="910" r="6"/>
+    <circle cx="1462" cy="938" r="6"/>
+    <circle cx="1462" cy="966" r="6"/>
+    <line x1="1607" y1="747" x2="1510" y2="910"/>
+    <line x1="1802" y1="747" x2="1800" y2="602"/>
+    <line x1="1704" y1="861" x2="1704" y2="954"/>
+    <line x1="1607" y1="804" x2="1510" y2="882"/>
+    <line x1="1801" y1="804" x2="1800" y2="727"/>
+    <line x1="1510" y1="910" x2="1510" y2="1026"/>
+    <line x1="1511" y1="802" x2="1510" y2="910"/>
+    <line x1="1414" y1="882" x2="1316" y2="958"/>
+    <line x1="1462" y1="1000" x2="1462" y2="1116"/>
+    <line x1="1414" y1="1021" x2="1316" y2="1097"/>
+    <line x1="1559" y1="882" x2="1656" y2="806"/>
+    <line x1="1559" y1="943" x2="1656" y2="867"/>
+    <line x1="1656" y1="747" x2="1752" y2="671"/>
+    <line x1="1752" y1="747" x2="1800" y2="671"/>
+  </g>
+
+  <!-- Connecting lines between clusters -->
+  <g class="th" opacity="0.35" filter="url(#f3)">
+    <line x1="756" y1="215" x2="860" y2="172"/>
+    <line x1="1358" y1="215" x2="1462" y2="172"/>
+    <line x1="756" y1="515" x2="860" y2="472"/>
+    <line x1="1358" y1="515" x2="1462" y2="472"/>
+    <line x1="756" y1="815" x2="860" y2="772"/>
+    <line x1="1358" y1="815" x2="1462" y2="772"/>
+    <line x1="500" y1="261" x2="500" y2="333"/>
+    <line x1="1102" y1="261" x2="1102" y2="333"/>
+    <line x1="1704" y1="261" x2="1704" y2="333"/>
+    <line x1="500" y1="561" x2="500" y2="633"/>
+    <line x1="1102" y1="561" x2="1102" y2="633"/>
+    <line x1="1704" y1="561" x2="1704" y2="633"/>
+  </g>
+
+  <!-- Decorative bursts -->
+  <g class="th" opacity="0.12" filter="url(#f2)">
+    <line x1="200" y1="0" x2="400" y2="200"/>
+    <line x1="800" y1="0" x2="1000" y2="200"/>
+    <line x1="1400" y1="0" x2="1600" y2="200"/>
+    <line x1="0" y1="300" x2="200" y2="500"/>
+    <line x1="600" y1="300" x2="800" y2="500"/>
+    <line x1="1200" y1="300" x2="1400" y2="500"/>
+    <line x1="1800" y1="300" x2="1800" y2="500"/>
+    <line x1="200" y1="600" x2="400" y2="800"/>
+    <line x1="800" y1="600" x2="1000" y2="800"/>
+    <line x1="1400" y1="600" x2="1600" y2="800"/>
+    <circle cx="100" cy="100" r="30"/>
+    <circle cx="900" cy="100" r="30"/>
+    <circle cx="1700" cy="100" r="30"/>
+    <circle cx="500" cy="400" r="30"/>
+    <circle cx="1300" cy="400" r="30"/>
+    <circle cx="100" cy="700" r="30"/>
+    <circle cx="900" cy="700" r="30"/>
+    <circle cx="1700" cy="700" r="30"/>
+  </g>
+
+  <!-- Central decorative element -->
+  <g class="th" opacity="0.15" filter="url(#f1)">
+    <line x1="800" y1="300" x2="1000" y2="300"/>
+    <line x1="900" y1="200" x2="900" y2="400"/>
+    <circle cx="900" cy="300" r="50"/>
+    <circle cx="900" cy="300" r="100"/>
+    <circle cx="900" cy="300" r="150"/>
+    <circle cx="900" cy="300" r="200"/>
+  </g>
+
+  <!-- Radial gradients -->
+  <circle cx="500" cy="147" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1102" cy="147" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1704" cy="147" r="200" fill="url(#rg2)" opacity="0.05"/>
+  <circle cx="500" cy="447" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1102" cy="447" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1704" cy="447" r="200" fill="url(#rg2)" opacity="0.05"/>
+  <circle cx="500" cy="747" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1102" cy="747" r="200" fill="url(#rg1)" opacity="0.05"/>
+  <circle cx="1704" cy="747" r="200" fill="url(#rg2)" opacity="0.05"/>
+</svg>
