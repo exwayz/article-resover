@@ -220,7 +220,7 @@ textarea#output-text {
   z-index: 0;
 }
 
-.btn > * {
+.btn {
   position: relative;
   z-index: 1;
 }
