@@ -203,6 +203,20 @@ textarea#output-text {
   letter-spacing: 0.3px;
   -webkit-user-select: none;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0),
+    radial-gradient(circle at 3px 3px, rgba(0,0,0,0.2) 1px, transparent 0);
+  background-size: 4px 4px;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 .btn-resolve {
@@ -287,6 +301,19 @@ textarea#output-text {
 .btn-copy:hover {
   background: var(--bg-hover);
   border-color: var(--fg-muted);
+}
+
+.btn-editor {
+  background: var(--bg-input);
+  color: var(--red);
+  border: 1px solid var(--red-dim);
+  text-decoration: none;
+}
+
+.btn-editor:hover {
+  background: var(--red-dim);
+  color: #fff;
+  border-color: var(--red);
 }
 
 .status {
