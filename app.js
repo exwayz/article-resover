@@ -36,11 +36,17 @@ fetch(`${API}/api/info`)
 
 // ── Shine effect ───────────────────────────────────────────────
 function updateShine() {
-  btnResolve.classList.toggle("shine", inputText.value.trim().length > 0);
-  btnCopy.classList.toggle("shine", outputText.value.trim().length > 0);
+  const hasInput = inputText.value.trim().length > 0;
+  const hasOutput = outputText.value.trim().length > 0;
+  btnResolve.classList.toggle("shine", hasInput && !hasOutput);
+  btnCopy.classList.toggle("shine", hasOutput);
 }
 
-inputText.addEventListener("input", updateShine);
+inputText.addEventListener("input", () => {
+  outputText.value = "";
+  updateShine();
+});
+
 outputText.addEventListener("input", updateShine);
 
 // ── Mode toggle ─────────────────────────────────────────────────
@@ -97,6 +103,7 @@ async function doResolve() {
     const elapsed = Math.round(performance.now() - t0);
 
     outputText.value = data.result;
+  updateShine();
 
     const method = data.method === "smart" ? "AI" : data.method === "naive-fallback" ? "naive (no key)" : "local";
     status.textContent = `${data.matches_confirmed.toLocaleString()} names resolved via ${method}  (${elapsed}ms)`;
