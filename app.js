@@ -34,6 +34,15 @@ fetch(`${API}/api/info`)
     infoLine.style.color = "#d32f2f";
   });
 
+// ── Shine effect ───────────────────────────────────────────────
+function updateShine() {
+  btnResolve.classList.toggle("shine", inputText.value.trim().length > 0);
+  btnCopy.classList.toggle("shine", outputText.value.trim().length > 0);
+}
+
+inputText.addEventListener("input", updateShine);
+outputText.addEventListener("input", updateShine);
+
 // ── Mode toggle ─────────────────────────────────────────────────
 btnSmart.addEventListener("click", () => {
   currentMode = "smart";
@@ -112,6 +121,7 @@ btnClear.addEventListener("click", () => {
   copyStatus.textContent = "";
   spinner.style.display = "none";
   btnResolve.classList.remove("loading");
+  updateShine();
 });
 
 // ── Copy ────────────────────────────────────────────────────────
