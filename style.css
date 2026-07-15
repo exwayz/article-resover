@@ -19,8 +19,8 @@
   --red-glow: rgba(211, 47, 47, 0.15);
   --border: #2e2e2e;
   --border-focus: #d32f2f;
-  --radius: 8px;
-  --radius-sm: 5px;
+  --radius: 0;
+  --radius-sm: 0;
   --font-ui: 'Ubuntu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Mono', 'Consolas', monospace;
 }
@@ -28,9 +28,9 @@
 html, body {
   height: 100%;
   background-color: #121212;
-  background-image: url("bg-pattern.svg");
+  background-image: url("topography.svg");
   background-repeat: repeat;
-  background-size: 1800px 900px;
+  background-size: 600px 600px;
   color: var(--fg);
   font-family: var(--font-ui);
   font-size: 14px;
@@ -127,7 +127,7 @@ html, body {
   height: 2px;
   background: linear-gradient(90deg, var(--red), transparent);
   margin-bottom: 18px;
-  border-radius: 1px;
+  border-radius: 0;
 }
 
 /* ── Sections ──────────────────────────────────────────────────── */
@@ -217,7 +217,12 @@ textarea#output-text {
   background-color: inherit;
   background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.24' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
-  border-radius: inherit;
+  z-index: 0;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 1;
 }
 
 .btn-resolve {
@@ -260,7 +265,7 @@ textarea#output-text {
   background-color: var(--red);
   height: 100%;
   width: 4px;
-  border-radius: 2px;
+  border-radius: 0;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;
 }
 
