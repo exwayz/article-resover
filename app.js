@@ -7,6 +7,7 @@ let currentMode = "smart";
 // ── DOM refs ────────────────────────────────────────────────────
 const inputText    = document.getElementById("input-text");
 const outputText   = document.getElementById("output-text");
+const outputDisplay= document.getElementById("output-display");
 const btnResolve   = document.getElementById("btn-resolve");
 const btnClear     = document.getElementById("btn-clear");
 const btnCopy      = document.getElementById("btn-copy");
@@ -16,6 +17,45 @@ const spinner      = document.getElementById("spinner");
 const status       = document.getElementById("status");
 const copyStatus   = document.getElementById("copy-status");
 const infoLine     = document.getElementById("info-line");
+
+// ── Output helpers ──────────────────────────────────────────────
+function setOutput(text) {
+  outputText.value = text;
+  renderOutput(text);
+  updateShine();
+}
+
+function renderOutput(text) {
+  if (!text) {
+    outputDisplay.innerHTML = "";
+    return;
+  }
+  outputDisplay.innerHTML = escapeHtml(text).replace(
+    /(\/(?:country|region|alliance|party|mu)\/\S+)/g,
+    '<span class="url">$1</span>'
+  );
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function getOutputText() {
+  return outputText.value;
+}
+
+// ── Shine effect ───────────────────────────────────────────────
+function updateShine() {
+  const hasInput = inputText.value.trim().length > 0;
+  const hasOutput = outputText.value.trim().length > 0;
+  btnResolve.classList.toggle("shine", hasInput && !hasOutput);
+  btnCopy.classList.toggle("shine", hasOutput);
+}
+
+inputText.addEventListener("input", () => {
+  setOutput("");
+  updateShine();
+});
 
 // ── Load info ───────────────────────────────────────────────────
 fetch(`${API}/api/info`)
@@ -33,21 +73,6 @@ fetch(`${API}/api/info`)
     infoLine.textContent = "backend not connected — start the server first";
     infoLine.style.color = "#d32f2f";
   });
-
-// ── Shine effect ───────────────────────────────────────────────
-function updateShine() {
-  const hasInput = inputText.value.trim().length > 0;
-  const hasOutput = outputText.value.trim().length > 0;
-  btnResolve.classList.toggle("shine", hasInput && !hasOutput);
-  btnCopy.classList.toggle("shine", hasOutput);
-}
-
-inputText.addEventListener("input", () => {
-  outputText.value = "";
-  updateShine();
-});
-
-outputText.addEventListener("input", updateShine);
 
 // ── Mode toggle ─────────────────────────────────────────────────
 btnSmart.addEventListener("click", () => {
@@ -102,8 +127,7 @@ async function doResolve() {
     const data = await res.json();
     const elapsed = Math.round(performance.now() - t0);
 
-    outputText.value = data.result;
-  updateShine();
+    setOutput(data.result);
 
     const method = data.method === "smart" ? "AI" : data.method === "naive-fallback" ? "naive (no key)" : "local";
     status.textContent = `${data.matches_confirmed.toLocaleString()} names resolved via ${method}  (${elapsed}ms)`;
@@ -122,7 +146,7 @@ async function doResolve() {
 // ── Clear ───────────────────────────────────────────────────────
 btnClear.addEventListener("click", () => {
   inputText.value = "";
-  outputText.value = "";
+  setOutput("");
   status.textContent = "";
   status.className = "status";
   copyStatus.textContent = "";
@@ -133,7 +157,7 @@ btnClear.addEventListener("click", () => {
 
 // ── Copy ────────────────────────────────────────────────────────
 btnCopy.addEventListener("click", () => {
-  const text = outputText.value;
+  const text = getOutputText();
   if (!text) {
     copyStatus.textContent = "nothing to copy";
     setTimeout(() => copyStatus.textContent = "", 2000);

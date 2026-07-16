@@ -180,6 +180,31 @@ textarea#output-text {
   cursor: default;
 }
 
+.output-display {
+  width: 100%;
+  min-height: 160px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg);
+  white-space: pre-wrap;
+  word-break: break-all;
+  cursor: default;
+}
+
+.output-display:empty::before {
+  content: attr(data-placeholder);
+  color: var(--fg-muted);
+}
+
+.output-display .url {
+  color: var(--red);
+  font-weight: 600;
+}
+
 /* ── Actions ───────────────────────────────────────────────────── */
 .actions {
   display: flex;
