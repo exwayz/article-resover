@@ -21,8 +21,8 @@
   --border-focus: #d32f2f;
   --radius: 0;
   --radius-sm: 0;
-  --font-ui: 'Ubuntu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Fira Mono', 'Consolas', monospace;
+  --font-ui: 'Playfair Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Atkinson Hyperlegible', 'Consolas', monospace;
 }
 
 html, body {
