@@ -525,7 +525,7 @@ body {
 }
 
 .bottom-bar a {
-  color: #999;
+  color: var(--red);
   text-decoration: none;
 }
 
