@@ -5,24 +5,24 @@
 }
 
 :root {
-  --bg: #121212;
-  --bg-surface: #1a1a1a;
-  --bg-card: #1e1e1e;
-  --bg-input: #242424;
-  --bg-hover: #2a2a2a;
-  --fg: #e0e0e0;
-  --fg-dim: #888888;
-  --fg-muted: #666666;
-  --red: #d32f2f;
-  --red-hover: #ef5350;
-  --red-dim: #7f1d1d;
-  --red-glow: rgba(211, 47, 47, 0.15);
-  --border: #2e2e2e;
-  --border-focus: #d32f2f;
-  --radius: 0;
-  --radius-sm: 0;
-  --font-ui: 'Ubuntu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'Fira Mono', 'Consolas', monospace;
+  --bg:              #121212;
+  --bg-surface:      #1a1a1a;
+  --bg-card:         #1a1a1a;
+  --bg-input:        #242424;
+  --bg-hover:        #2e2e2e;
+  --fg:              #e6e6e6;
+  --fg-dim:          #b0b0b0;
+  --fg-muted:        #8F8F8F;
+  --red:             #f87171;
+  --red-hover:       #fca5a5;
+  --red-dim:         #b91c1c;
+  --red-glow:        rgba(248, 113, 113, 0.15);
+  --border:          #303030;
+  --border-focus:    #f87171;
+  --radius:          0;
+  --radius-sm:       0;
+  --font-ui:         "Literata", Georgia, "Times New Roman", serif;
+  --font-mono:       "Fira Code", "Courier New", monospace;
 }
 
 html, body {
