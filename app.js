@@ -13,7 +13,6 @@ const btnClear     = document.getElementById("btn-clear");
 const btnCopy      = document.getElementById("btn-copy");
 const btnSmart     = document.getElementById("btn-smart");
 const btnNaive     = document.getElementById("btn-naive");
-const spinner      = document.getElementById("spinner");
 const status       = document.getElementById("status");
 const copyStatus   = document.getElementById("copy-status");
 const infoLine     = document.getElementById("info-line");
@@ -107,7 +106,6 @@ async function doResolve() {
   }
 
   btnResolve.classList.add("loading");
-  spinner.classList.add("visible");
   status.textContent = currentMode === "smart" ? "resolving with AI..." : "resolving...";
   status.className = "status";
 
@@ -138,7 +136,6 @@ async function doResolve() {
     status.className = "status error";
   } finally {
     btnResolve.classList.remove("loading");
-    spinner.classList.remove("visible");
   }
 }
 
@@ -149,7 +146,6 @@ btnClear.addEventListener("click", () => {
   status.textContent = "";
   status.className = "status";
   copyStatus.textContent = "";
-  spinner.classList.remove("visible");
   btnResolve.classList.remove("loading");
   updateShine();
 });

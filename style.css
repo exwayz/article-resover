@@ -292,47 +292,41 @@ textarea::placeholder {
   pointer-events: none;
 }
 
-.btn-resolve.loading .btn-text {
-  display: none;
-}
-
-.btn-resolve.loading .btn-arrow {
-  display: none;
-}
-
-/* ── Spinner ────────────────────────────────────────────────────── */
-.spinner {
+/* ── In-button spinner ─────────────────────────────────────────── */
+.btn-spinner {
   display: none;
   align-items: center;
   gap: 3px;
-  height: 24px;
-  margin-left: 4px;
+  height: 100%;
 }
 
-.spinner.visible {
+.btn-resolve.loading .btn-text,
+.btn-resolve.loading .btn-arrow { display: none; }
+
+.btn-resolve.loading .btn-spinner {
   display: inline-flex;
 }
 
-.spinner > div {
-  background-color: var(--red);
-  height: 100%;
+.btn-spinner span {
+  display: block;
   width: 4px;
-  border-radius: 0;
-  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  height: 100%;
+  background-color: currentColor;
+  animation: btnbar 1.2s infinite ease-in-out;
 }
 
-.spinner .rect2 { animation-delay: -1.1s; }
-.spinner .rect3 { animation-delay: -1.0s; }
-.spinner .rect4 { animation-delay: -0.9s; }
-.spinner .rect5 { animation-delay: -0.8s; }
+.btn-spinner span:nth-child(2) { animation-delay: -1.1s; }
+.btn-spinner span:nth-child(3) { animation-delay: -1.0s; }
+.btn-spinner span:nth-child(4) { animation-delay: -0.9s; }
+.btn-spinner span:nth-child(5) { animation-delay: -0.8s; }
 
-@keyframes sk-stretchdelay {
+@keyframes btnbar {
   0%, 40%, 100% { transform: scaleY(0.4); }
-  20% { transform: scaleY(1.0); }
+  20%           { transform: scaleY(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .spinner > div {
+  .btn-spinner span {
     animation: none;
     opacity: 0.4;
   }
