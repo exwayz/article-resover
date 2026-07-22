@@ -169,14 +169,12 @@ btnCopy.addEventListener("click", () => {
   });
 });
 
-// ── Ember canvas animation ──────────────────────────────────────
+// ── Topography line glow animation ─────────────────────────────
 (function() {
   const canvas = document.getElementById("ember-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
   let W, H;
-  const embers = [];
-  const COUNT = 35;
 
   function resize() {
     W = canvas.width = window.innerWidth;
@@ -185,73 +183,91 @@ btnCopy.addEventListener("click", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  function rand(a, b) { return a + Math.random() * (b - a); }
+  const svgImg = new Image();
+  svgImg.src = "topography.svg";
 
-  function createEmber() {
-    return {
-      x: rand(0, W),
-      y: rand(0, H),
-      r: rand(1.5, 5),
-      baseR: rand(1.5, 5),
-      vx: rand(-0.15, 0.15),
-      vy: rand(-0.1, 0.1),
-      phase: rand(0, Math.PI * 2),
-      pulseSpeed: rand(0.008, 0.025),
-      pulseAmp: rand(0.3, 1),
-      drift: rand(0.3, 1.2),
-      driftAngle: rand(0, Math.PI * 2),
-      driftSpeed: rand(0.002, 0.008),
-      life: rand(0, 1),
-      lifeSpeed: rand(0.001, 0.004),
-      heat: rand(0, 1)
-    };
-  }
+  let pathPixels = [];
+  let spots = [];
+  const SPOT_COUNT = 18;
 
-  for (let i = 0; i < COUNT; i++) embers.push(createEmber());
+  svgImg.onload = function() {
+    const oc = document.createElement("canvas");
+    const octx = oc.getContext("2d");
+    oc.width = 600;
+    oc.height = 600;
+    octx.drawImage(svgImg, 0, 0);
+    const imgData = octx.getImageData(0, 0, 600, 600).data;
 
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    for (const e of embers) {
-      e.phase += e.pulseSpeed;
-      e.driftAngle += e.driftSpeed;
-      e.life += e.lifeSpeed;
-
-      e.x += e.vx + Math.cos(e.driftAngle) * e.drift * 0.3;
-      e.y += e.vy + Math.sin(e.driftAngle) * e.drift * 0.3;
-
-      const lifeFade = Math.sin(e.life * Math.PI);
-      const pulse = 1 + Math.sin(e.phase) * e.pulseAmp * lifeFade;
-      const r = e.baseR * pulse;
-      const alpha = (0.15 + 0.35 * lifeFade) * pulse;
-
-      if (e.x < -40) e.x = W + 40;
-      if (e.x > W + 40) e.x = -40;
-      if (e.y < -40) e.y = H + 40;
-      if (e.y > H + 40) e.y = -40;
-      if (e.life > 1) { e.life = 0; e.x = rand(0, W); e.y = rand(0, H); }
-
-      const grad = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, r * 6);
-      grad.addColorStop(0, `rgba(255, 80, 30, ${alpha * 1.2})`);
-      grad.addColorStop(0.3, `rgba(220, 40, 10, ${alpha * 0.7})`);
-      grad.addColorStop(0.6, `rgba(160, 20, 5, ${alpha * 0.3})`);
-      grad.addColorStop(1, "rgba(80, 10, 0, 0)");
-
-      ctx.globalCompositeOperation = "screen";
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, r * 6, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(e.x, e.y, r * 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 160, 60, ${alpha * 1.5})`;
-      ctx.fill();
+    for (let y = 0; y < 600; y += 4) {
+      for (let x = 0; x < 600; x += 4) {
+        const i = (y * 600 + x) * 4;
+        if (imgData[i + 3] > 128 && imgData[i] < 100) {
+          pathPixels.push({ x, y });
+        }
+      }
     }
 
-    ctx.globalCompositeOperation = "source-over";
-    requestAnimationFrame(draw);
-  }
+    if (pathPixels.length === 0) return;
 
-  draw();
+    for (let i = 0; i < SPOT_COUNT; i++) {
+      spots.push(createSpot());
+    }
+
+    function createSpot() {
+      const base = pathPixels[Math.floor(Math.random() * pathPixels.length)];
+      return {
+        tileX: Math.floor(Math.random() * (W / 600 + 1)),
+        tileY: Math.floor(Math.random() * (H / 600 + 1)),
+        lx: base.x,
+        ly: base.y,
+        radius: 20 + Math.random() * 50,
+        phase: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.01 + Math.random() * 0.03,
+        pulseAmp: 0.4 + Math.random() * 0.6,
+        life: 0,
+        lifeSpeed: 0.002 + Math.random() * 0.005,
+        maxLife: 0.6 + Math.random() * 0.4
+      };
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      for (const s of spots) {
+        s.phase += s.pulseSpeed;
+        s.life += s.lifeSpeed;
+
+        const lifeProgress = s.life / s.maxLife;
+        const fadeIn = Math.min(lifeProgress * 4, 1);
+        const fadeOut = Math.max(1 - (lifeProgress - 0.7) / 0.3, 0);
+        const fade = fadeIn * (lifeProgress > 0.7 ? fadeOut : 1);
+        const pulse = 0.5 + 0.5 * Math.sin(s.phase);
+        const alpha = fade * pulse * 0.55;
+
+        const gx = s.tileX * 600 + s.lx;
+        const gy = s.tileY * 600 + s.ly;
+
+        const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, s.radius);
+        grad.addColorStop(0, `rgba(185, 28, 28, ${alpha * 1.0})`);
+        grad.addColorStop(0.3, `rgba(120, 15, 15, ${alpha * 0.6})`);
+        grad.addColorStop(0.7, `rgba(80, 10, 10, ${alpha * 0.2})`);
+        grad.addColorStop(1, "rgba(40, 5, 5, 0)");
+
+        ctx.globalCompositeOperation = "screen";
+        ctx.beginPath();
+        ctx.arc(gx, gy, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        if (s.life > s.maxLife) {
+          Object.assign(s, createSpot());
+        }
+      }
+
+      ctx.globalCompositeOperation = "source-over";
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  };
 })();
