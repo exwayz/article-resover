@@ -6,8 +6,6 @@
 
 :root {
   --bg:              #121212;
-  --bg-surface:      #1a1a1a;
-  --bg-card:         #1a1a1a;
   --bg-input:        #242424;
   --bg-hover:        #2e2e2e;
   --fg:              #e6e6e6;
@@ -188,11 +186,6 @@ textarea {
 
 textarea::placeholder {
   color: var(--fg-muted);
-}
-
-textarea#output-text {
-  color: #b0bec5;
-  cursor: default;
 }
 
 .output-display {
@@ -523,11 +516,6 @@ textarea#output-text {
   }
 }
 
-/* Ensure content doesn't hide behind fixed bottom bar */
-body {
-  padding-bottom: 0;
-}
-
 /* ── Bottom bar ───────────────────────────────────────────────── */
 .bottom-bar {
   text-align: center;
@@ -541,10 +529,6 @@ body {
 
 .bottom-bar a {
   color: var(--red);
-  text-decoration: none;
-}
-
-.bottom-bar a:hover {
   text-decoration: none;
 }
 
