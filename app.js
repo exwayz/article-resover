@@ -188,19 +188,20 @@ btnCopy.addEventListener("click", () => {
 
   let pathPixels = [];
   let spots = [];
-  const SPOT_COUNT = 18;
+  const SPOT_COUNT = 22;
+  const TILE = 600;
 
   svgImg.onload = function() {
     const oc = document.createElement("canvas");
     const octx = oc.getContext("2d");
-    oc.width = 600;
-    oc.height = 600;
+    oc.width = TILE;
+    oc.height = TILE;
     octx.drawImage(svgImg, 0, 0);
-    const imgData = octx.getImageData(0, 0, 600, 600).data;
+    const imgData = octx.getImageData(0, 0, TILE, TILE).data;
 
-    for (let y = 0; y < 600; y += 4) {
-      for (let x = 0; x < 600; x += 4) {
-        const i = (y * 600 + x) * 4;
+    for (let y = 0; y < TILE; y += 3) {
+      for (let x = 0; x < TILE; x += 3) {
+        const i = (y * TILE + x) * 4;
         if (imgData[i + 3] > 128 && imgData[i] < 100) {
           pathPixels.push({ x, y });
         }
@@ -209,25 +210,42 @@ btnCopy.addEventListener("click", () => {
 
     if (pathPixels.length === 0) return;
 
-    for (let i = 0; i < SPOT_COUNT; i++) {
-      spots.push(createSpot());
+    function getLocalDir(px, py, range) {
+      let dx = 0, dy = 0;
+      for (const p of pathPixels) {
+        const ddx = p.x - px;
+        const ddy = p.y - py;
+        if (Math.abs(ddx) < range && Math.abs(ddy) < range) {
+          dx += ddx;
+          dy += ddy;
+        }
+      }
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
+      return { x: dx / len, y: dy / len };
     }
 
     function createSpot() {
       const base = pathPixels[Math.floor(Math.random() * pathPixels.length)];
+      const dir = getLocalDir(base.x, base.y, 12);
+      const len = 8 + Math.random() * 25;
       return {
-        tileX: Math.floor(Math.random() * (W / 600 + 1)),
-        tileY: Math.floor(Math.random() * (H / 600 + 1)),
+        tileX: Math.floor(Math.random() * (W / TILE + 1)),
+        tileY: Math.floor(Math.random() * (H / TILE + 1)),
         lx: base.x,
         ly: base.y,
-        radius: 20 + Math.random() * 50,
+        dx: dir.x * len,
+        dy: dir.y * len,
         phase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.01 + Math.random() * 0.03,
-        pulseAmp: 0.4 + Math.random() * 0.6,
+        pulseSpeed: 0.015 + Math.random() * 0.035,
         life: 0,
-        lifeSpeed: 0.002 + Math.random() * 0.005,
-        maxLife: 0.6 + Math.random() * 0.4
+        lifeSpeed: 0.003 + Math.random() * 0.006,
+        maxLife: 0.5 + Math.random() * 0.5,
+        width: 1 + Math.random() * 2
       };
+    }
+
+    for (let i = 0; i < SPOT_COUNT; i++) {
+      spots.push(createSpot());
     }
 
     function draw() {
@@ -237,34 +255,44 @@ btnCopy.addEventListener("click", () => {
         s.phase += s.pulseSpeed;
         s.life += s.lifeSpeed;
 
-        const lifeProgress = s.life / s.maxLife;
-        const fadeIn = Math.min(lifeProgress * 4, 1);
-        const fadeOut = Math.max(1 - (lifeProgress - 0.7) / 0.3, 0);
-        const fade = fadeIn * (lifeProgress > 0.7 ? fadeOut : 1);
-        const pulse = 0.5 + 0.5 * Math.sin(s.phase);
-        const alpha = fade * pulse * 0.55;
+        const lifeP = s.life / s.maxLife;
+        const fadeIn = Math.min(lifeP * 5, 1);
+        const fadeOut = lifeP > 0.7 ? Math.max(1 - (lifeP - 0.7) / 0.3, 0) : 1;
+        const fade = fadeIn * fadeOut;
+        const pulse = 0.3 + 0.7 * Math.sin(s.phase) * 0.5 + 0.5;
+        const alpha = fade * pulse * 0.7;
 
-        const gx = s.tileX * 600 + s.lx;
-        const gy = s.tileY * 600 + s.ly;
+        const gx = s.tileX * TILE + s.lx;
+        const gy = s.tileY * TILE + s.ly;
 
-        const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, s.radius);
-        grad.addColorStop(0, `rgba(185, 28, 28, ${alpha * 1.0})`);
-        grad.addColorStop(0.3, `rgba(120, 15, 15, ${alpha * 0.6})`);
-        grad.addColorStop(0.7, `rgba(80, 10, 10, ${alpha * 0.2})`);
-        grad.addColorStop(1, "rgba(40, 5, 5, 0)");
-
+        ctx.save();
         ctx.globalCompositeOperation = "screen";
+
+        ctx.shadowColor = `rgba(185, 28, 28, ${alpha * 0.9})`;
+        ctx.shadowBlur = 18 * pulse;
+        ctx.strokeStyle = `rgba(185, 28, 28, ${alpha})`;
+        ctx.lineWidth = s.width;
+        ctx.lineCap = "round";
         ctx.beginPath();
-        ctx.arc(gx, gy, s.radius, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
+        ctx.moveTo(gx - s.dx, gy - s.dy);
+        ctx.lineTo(gx + s.dx, gy + s.dy);
+        ctx.stroke();
+
+        ctx.shadowBlur = 8 * pulse;
+        ctx.strokeStyle = `rgba(220, 60, 30, ${alpha * 0.6})`;
+        ctx.lineWidth = s.width * 0.5;
+        ctx.beginPath();
+        ctx.moveTo(gx - s.dx * 0.7, gy - s.dy * 0.7);
+        ctx.lineTo(gx + s.dx * 0.7, gy + s.dy * 0.7);
+        ctx.stroke();
+
+        ctx.restore();
 
         if (s.life > s.maxLife) {
           Object.assign(s, createSpot());
         }
       }
 
-      ctx.globalCompositeOperation = "source-over";
       requestAnimationFrame(draw);
     }
 
