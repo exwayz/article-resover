@@ -28,9 +28,6 @@
 html, body {
   height: 100%;
   background-color: #121212;
-  background-image: url("topography.svg");
-  background-repeat: repeat;
-  background-size: 600px 600px;
   color: var(--fg);
   font-family: var(--font-ui);
   font-size: 14px;
@@ -40,13 +37,38 @@ html, body {
   overflow-x: hidden;
 }
 
-#ember-canvas {
+/* ── Topography background ───────────────────────────────────── */
+.topo-bg {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+.topo-bg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.topo-static {
+  fill: #1c1c1c;
+}
+
+.topo-glow {
+  fill: #b91c1c;
+  filter: url(#glow-filter);
+  clip-path: url(#sweep-clip);
+}
+
+@keyframes sweep {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+#sweep-rect {
+  animation: sweep 8s ease-in-out infinite;
 }
 
 .app {
