@@ -70,7 +70,7 @@ html, body {
 }
 
 .header h1 .accent {
-  color: var(--red);
+  color: var(--fg);
 }
 
 .subtitle {
