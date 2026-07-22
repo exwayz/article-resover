@@ -40,17 +40,6 @@ html, body {
   overflow-x: hidden;
 }
 
-.app {
-  position: relative;
-  z-index: 1;
-}
-}
-
-.app {
-  position: relative;
-  z-index: 1;
-}
-
 /* ── App shell ─────────────────────────────────────────────────── */
 .app {
   max-width: 960px;
