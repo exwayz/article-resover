@@ -178,7 +178,7 @@ html, body {
 
 textarea {
   width: 100%;
-  min-height: 160px;
+  min-height: 180px;
   padding: 12px 14px;
   border: none;
   outline: none;
@@ -196,7 +196,7 @@ textarea::placeholder {
 
 .output-display {
   width: 100%;
-  min-height: 160px;
+  min-height: 180px;
   max-height: 400px;
   overflow-y: auto;
   padding: 12px 14px;
