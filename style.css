@@ -23,6 +23,10 @@
   --font-mono:       "Fira Code", "Courier New", monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   min-height: 100%;
   background-color: #121212;
@@ -42,7 +46,7 @@ html, body {
 .app {
   max-width: 960px;
   margin: 0 auto;
-  padding: 20px 24px 32px;
+  padding: 20px 24px 40px;
 }
 
 /* ── Header ────────────────────────────────────────────────────── */
@@ -141,6 +145,8 @@ html, body {
   color: var(--fg-dim);
   letter-spacing: 0.8px;
   margin-bottom: 6px;
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
 
 .textarea-wrap {
@@ -296,11 +302,15 @@ textarea::placeholder {
 
 /* ── Spinner ────────────────────────────────────────────────────── */
 .spinner {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 3px;
   height: 24px;
   margin-left: 4px;
+}
+
+.spinner.visible {
+  display: inline-flex;
 }
 
 .spinner > div {
@@ -351,6 +361,12 @@ textarea::placeholder {
   border-color: var(--fg-muted);
 }
 
+.btn-clear:active,
+.btn-copy:active,
+.btn-editor:active {
+  transform: scale(0.97);
+}
+
 .btn-editor {
   background-color: var(--bg-input);
   color: var(--red);
@@ -375,6 +391,11 @@ textarea::placeholder {
 .status.resolved {
   color: var(--red);
   font-weight: 600;
+}
+
+.status.error,
+.error {
+  color: var(--red);
 }
 
 /* ── Copy row ──────────────────────────────────────────────────── */

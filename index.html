@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Resolver</title>
+  <meta name="description" content="Resolve War Era country, region, alliance, party, and MU names into in-game URLs.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +12,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
+  <main class="app">
     <!-- Header -->
     <header class="header">
       <div class="header-left">
@@ -36,20 +37,20 @@
 
     <!-- Input -->
     <section class="section">
-      <label class="section-label">PASTE PLAIN TEXT</label>
+      <label class="section-label">Paste plain text</label>
       <div class="textarea-wrap">
         <textarea id="input-text" placeholder="Write or paste your text here...&#10;&#10;Country, region, alliance, party, and MU names will be resolved into URLs." spellcheck="false"></textarea>
       </div>
     </section>
 
     <!-- Actions -->
-    <div class="actions">
+    <nav class="actions">
       <button class="btn btn-resolve" id="btn-resolve">
-        <span class="btn-text">RESOLVE</span>
+        <span class="btn-text">Resolve</span>
         <span class="btn-arrow">&rarr;</span>
       </button>
-      <button class="btn btn-clear" id="btn-clear">CLEAR</button>
-      <div class="spinner" id="spinner" style="display:none">
+      <button class="btn btn-clear" id="btn-clear">Clear</button>
+      <div class="spinner" id="spinner">
         <div class="rect1"></div>
         <div class="rect2"></div>
         <div class="rect3"></div>
@@ -57,11 +58,11 @@
         <div class="rect5"></div>
       </div>
       <div class="status" id="status"></div>
-    </div>
+    </nav>
 
     <!-- Output -->
     <section class="section">
-      <label class="section-label">RESOLVED OUTPUT</label>
+      <label class="section-label">Resolved output</label>
       <div class="textarea-wrap">
         <div id="output-display" class="output-display" data-placeholder="Resolved output will appear here..."></div>
         <textarea id="output-text" hidden></textarea>
@@ -69,15 +70,15 @@
     </section>
 
     <!-- Copy -->
-    <div class="copy-row">
-      <button class="btn btn-copy" id="btn-copy">COPY OUTPUT</button>
+    <nav class="copy-row">
+      <button class="btn btn-copy" id="btn-copy">Copy output</button>
       <a class="btn btn-editor" href="https://app.warera.io/news/write" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        OPEN EDITOR
+        Open editor
       </a>
       <span class="copy-status" id="copy-status"></span>
-    </div>
-  </div>
+    </nav>
+  </main>
 
   <footer class="bottom-bar">
     The <a href="https://app.warera.io/article/6a2412d3ab0324053f192413" target="_blank" rel="noopener">rooster</a> owns no sunrise, yet never fails to announce it.

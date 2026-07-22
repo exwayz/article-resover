@@ -71,7 +71,7 @@ fetch(`${API}/api/info`)
   })
   .catch(() => {
     infoLine.textContent = "backend not connected — start the server first";
-    infoLine.style.color = "#d32f2f";
+    infoLine.classList.add("error");
   });
 
 // ── Mode toggle ─────────────────────────────────────────────────
@@ -107,7 +107,7 @@ async function doResolve() {
   }
 
   btnResolve.classList.add("loading");
-  spinner.style.display = "inline-flex";
+  spinner.classList.add("visible");
   status.textContent = currentMode === "smart" ? "resolving with AI..." : "resolving...";
   status.className = "status";
 
@@ -135,11 +135,10 @@ async function doResolve() {
 
   } catch (err) {
     status.textContent = `error: ${err.message}`;
-    status.className = "status";
-    status.style.color = "#d32f2f";
+    status.className = "status error";
   } finally {
     btnResolve.classList.remove("loading");
-    spinner.style.display = "none";
+    spinner.classList.remove("visible");
   }
 }
 
@@ -150,7 +149,7 @@ btnClear.addEventListener("click", () => {
   status.textContent = "";
   status.className = "status";
   copyStatus.textContent = "";
-  spinner.style.display = "none";
+  spinner.classList.remove("visible");
   btnResolve.classList.remove("loading");
   updateShine();
 });
