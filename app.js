@@ -30,7 +30,7 @@ function renderOutput(text) {
     return;
   }
   outputDisplay.innerHTML = escapeHtml(text).replace(
-    /(\/(?:country|region|alliance|party|mu)\/\S+)/g,
+    /(\/(?:country|region|alliance|party|mu|user)\/\S+)/g,
     '<span class="url">$1</span>'
   );
 }
