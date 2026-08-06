@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +17,12 @@
     <!-- Header -->
     <header class="header">
       <div class="header-left">
-        <h1>War Era <span class="accent">Name Resolver</span></h1>
+        <div class="title-row">
+          <h1>War Era <span class="accent">Name Resolver</span></h1>
+          <button type="button" class="info-btn" id="btn-info" aria-label="How to use the resolver" title="How to use">
+            <i class="fa-solid fa-circle-question"></i>
+          </button>
+        </div>
         <p class="subtitle" id="info-line">loading entities...</p>
       </div>
       <div class="header-right">
@@ -75,6 +81,43 @@
       <span class="copy-status" id="copy-status"></span>
     </nav>
   </main>
+
+  <!-- Info modal -->
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title">How to use the Name Resolver</h2>
+        <button type="button" class="modal-close" id="modal-close" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-sep"></div>
+      <div class="modal-body">
+        <p>The Name Resolver turns plain text into <strong>War Era links</strong>. Paste the result into the news editor and every recognized name becomes a <strong>clickable, hoverable entity</strong> that reveals its profile — a country, region, alliance, party, military unit, or player.</p>
+
+        <h3>What you can resolve</h3>
+        <p>Country, region, alliance, party, military unit (MU), and <strong>player usernames</strong>.</p>
+
+        <h3>How to use it</h3>
+        <ol>
+          <li>Type or paste your draft into the text field.</li>
+          <li>Press <strong>Resolve</strong> (or <kbd>Ctrl</kbd>+<kbd>Enter</kbd>).</li>
+          <li>Copy the output and paste it into the War Era news editor.</li>
+        </ol>
+
+        <h3>Modes</h3>
+        <ul>
+          <li><strong>Smart</strong> — uses AI to filter out accidental matches. Slower, but fewer false positives.</li>
+          <li><strong>Naive</strong> — links every known name instantly. Faster, but may over-match.</li>
+        </ul>
+
+        <h3>Try it</h3>
+        <p>Load a sample draft to see it in action:</p>
+        <div class="modal-sample">roostre is a citizen of Indonesia. He went abroad to Bangladesh to avoid the riots, joined the Bangladesh Citizen Party, and served under the military unit UNIT - 66 BuayaPutih to coordinate with the Indonesian units when needed.</div>
+        <button type="button" class="btn modal-try" id="btn-try-sample">Load sample</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="bottom-bar">
     The <a href="https://app.warera.io/article/6a2412d3ab0324053f192413" target="_blank" rel="noopener">rooster</a> owns no sunrise, yet never fails to announce it.

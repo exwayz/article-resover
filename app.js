@@ -163,3 +163,41 @@ btnCopy.addEventListener("click", () => {
     setTimeout(() => copyStatus.textContent = "", 2000);
   });
 });
+
+// ── Info modal ──────────────────────────────────────────────────
+const btnInfo      = document.getElementById("btn-info");
+const modalOverlay = document.getElementById("modal-overlay");
+const modalClose   = document.getElementById("modal-close");
+const btnTrySample = document.getElementById("btn-try-sample");
+
+const SAMPLE_TEXT = "roostre is a citizen of Indonesia. He went abroad to Bangladesh to avoid the riots, joined the Bangladesh Citizen Party, and served under the military unit UNIT - 66 BuayaPutih to coordinate with the Indonesian units when needed.";
+
+function openModal() {
+  modalOverlay.hidden = false;
+  modalClose.focus();
+  document.addEventListener("keydown", onModalKey);
+}
+
+function closeModal() {
+  modalOverlay.hidden = true;
+  document.removeEventListener("keydown", onModalKey);
+  btnInfo.focus();
+}
+
+function onModalKey(e) {
+  if (e.key === "Escape") closeModal();
+}
+
+btnInfo.addEventListener("click", openModal);
+modalClose.addEventListener("click", closeModal);
+modalOverlay.addEventListener("click", e => {
+  if (e.target === modalOverlay) closeModal();
+});
+
+btnTrySample.addEventListener("click", () => {
+  inputText.value = SAMPLE_TEXT;
+  setOutput("");
+  updateShine();
+  closeModal();
+  doResolve();
+});
