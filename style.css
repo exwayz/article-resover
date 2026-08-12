@@ -159,7 +159,7 @@ html, body {
 }
 
 .textarea-wrap::before {
-  content: '';
+  content: none;
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -169,6 +169,10 @@ html, body {
   mix-blend-mode: overlay;
   opacity: 1;
   background-color: rgba(180,140,80,.22);
+}
+
+body.grain-on .textarea-wrap::before {
+  content: '';
 }
 
 .textarea-wrap:focus-within {
@@ -868,4 +872,82 @@ textarea::placeholder {
 .chip-remove:hover {
   background: var(--red);
   color: #fff;
+}
+
+/* ── Preferences ───────────────────────────────────────────────── */
+.modal-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  padding: 11px 14px;
+}
+
+.switch-label strong {
+  display: block;
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.switch-label small {
+  display: block;
+  color: var(--fg-muted);
+  font-size: 11px;
+  margin-top: 1px;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-track {
+  width: 40px;
+  height: 22px;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.switch-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--fg-muted);
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.switch input:checked + .switch-track {
+  background: var(--red-dim);
+  border-color: var(--red);
+}
+
+.switch input:checked + .switch-track::after {
+  transform: translateX(20px);
+  background: #fff;
+}
+
+.switch input:focus-visible + .switch-track {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
 }

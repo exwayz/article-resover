@@ -202,6 +202,20 @@ btnTrySample.addEventListener("click", () => {
   doResolve();
 });
 
+// ── Preferences ─────────────────────────────────────────────────
+const grainToggle = document.getElementById("grain-toggle");
+const GRAIN_KEY = "warera.grain";
+
+const grainEnabled = localStorage.getItem(GRAIN_KEY) === "on";
+grainToggle.checked = grainEnabled;
+document.body.classList.toggle("grain-on", grainEnabled);
+
+grainToggle.addEventListener("change", () => {
+  const on = grainToggle.checked;
+  localStorage.setItem(GRAIN_KEY, on ? "on" : "off");
+  document.body.classList.toggle("grain-on", on);
+});
+
 // ── Blacklist ───────────────────────────────────────────────────
 const blacklistInput = document.getElementById("blacklist-input");
 const blacklistAdd   = document.getElementById("blacklist-add");
