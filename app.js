@@ -114,7 +114,7 @@ async function doResolve() {
     const res = await fetch(`${API}/api/resolve`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, mode: currentMode }),
+      body: JSON.stringify({ text, mode: currentMode, blacklist }),
     });
 
     if (!res.ok) {
@@ -201,3 +201,87 @@ btnTrySample.addEventListener("click", () => {
   closeModal();
   doResolve();
 });
+
+// ── Blacklist ───────────────────────────────────────────────────
+const blacklistInput = document.getElementById("blacklist-input");
+const blacklistAdd   = document.getElementById("blacklist-add");
+const blacklistChips = document.getElementById("blacklist-chips");
+
+const BLACKLIST_KEY = "warera.blacklist";
+let blacklist = loadBlacklist();
+
+function loadBlacklist() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(BLACKLIST_KEY));
+    return Array.isArray(raw)
+      ? raw.filter(w => typeof w === "string" && w.trim().length > 0)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveBlacklist() {
+  localStorage.setItem(BLACKLIST_KEY, JSON.stringify(blacklist));
+}
+
+function renderBlacklist() {
+  blacklistChips.innerHTML = "";
+  for (const word of blacklist) {
+    const chip = document.createElement("span");
+    chip.className = "chip";
+    chip.textContent = word;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "chip-remove";
+    btn.setAttribute("aria-label", `Remove ${word} from blacklist`);
+    btn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    btn.addEventListener("click", () => removeBlacklistWord(word));
+
+    chip.appendChild(btn);
+    blacklistChips.appendChild(chip);
+  }
+}
+
+function addBlacklistWords(raw) {
+  const words = raw
+    .split(/[,\s]+/)
+    .map(w => w.trim())
+    .filter(Boolean);
+
+  let added = 0;
+  for (const w of words) {
+    if (!blacklist.includes(w)) {
+      blacklist.push(w);
+      added++;
+    }
+  }
+  if (added) {
+    saveBlacklist();
+    renderBlacklist();
+  }
+  return added;
+}
+
+function removeBlacklistWord(word) {
+  blacklist = blacklist.filter(w => w !== word);
+  saveBlacklist();
+  renderBlacklist();
+}
+
+blacklistAdd.addEventListener("click", () => {
+  addBlacklistWords(blacklistInput.value);
+  blacklistInput.value = "";
+  blacklistInput.focus();
+});
+
+blacklistInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addBlacklistWords(blacklistInput.value);
+    blacklistInput.value = "";
+  }
+});
+
+renderBlacklist();

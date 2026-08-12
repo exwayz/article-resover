@@ -47,6 +47,14 @@
       <div class="textarea-wrap">
         <textarea id="input-text" placeholder="Write or paste your text here...&#10;&#10;Country, region, alliance, party, MU, and player username names will be resolved into URLs." spellcheck="false"></textarea>
       </div>
+      <div class="blacklist">
+        <label class="section-label" for="blacklist-input">Don't resolve these words</label>
+        <div class="blacklist-control">
+          <input id="blacklist-input" type="text" placeholder="10, 11" spellcheck="false" autocomplete="off">
+          <button type="button" class="btn blacklist-add" id="blacklist-add">Add</button>
+        </div>
+        <div class="blacklist-chips" id="blacklist-chips"></div>
+      </div>
     </section>
 
     <!-- Actions -->
