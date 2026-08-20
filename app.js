@@ -150,6 +150,17 @@ btnClear.addEventListener("click", () => {
   updateShine();
 });
 
+// ── Clipboard HTML helper ───────────────────────────────────────
+function textToClipboardHtml(text) {
+  return escapeHtml(text).replace(
+    /(\/(?:country|region|alliance|party|mu|user)\/[a-f0-9]+)([^\s]*)/g,
+    (match, url, punct) => {
+      if (!punct) return url;
+      return `<span>${url}<span style="display:none"></span>${punct}</span>`;
+    }
+  );
+}
+
 // ── Copy ────────────────────────────────────────────────────────
 btnCopy.addEventListener("click", () => {
   const text = getOutputText();
@@ -158,7 +169,13 @@ btnCopy.addEventListener("click", () => {
     setTimeout(() => copyStatus.textContent = "", 2000);
     return;
   }
-  navigator.clipboard.writeText(text).then(() => {
+  const html = textToClipboardHtml(text);
+  navigator.clipboard.write([
+    new ClipboardItem({
+      "text/html": new Blob([html], { type: "text/html" }),
+      "text/plain": new Blob([text], { type: "text/plain" }),
+    }),
+  ]).then(() => {
     copyStatus.textContent = "copied!";
     setTimeout(() => copyStatus.textContent = "", 2000);
   });
