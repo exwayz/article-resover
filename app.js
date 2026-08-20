@@ -170,15 +170,21 @@ btnCopy.addEventListener("click", () => {
     return;
   }
   const html = textToClipboardHtml(text);
-  navigator.clipboard.write([
-    new ClipboardItem({
-      "text/html": new Blob([html], { type: "text/html" }),
-      "text/plain": new Blob([text], { type: "text/plain" }),
-    }),
-  ]).then(() => {
-    copyStatus.textContent = "copied!";
-    setTimeout(() => copyStatus.textContent = "", 2000);
-  });
+  const holder = document.createElement("div");
+  holder.innerHTML = html;
+  holder.style.position = "fixed";
+  holder.style.left = "-9999px";
+  document.body.appendChild(holder);
+  const range = document.createRange();
+  range.selectNodeContents(holder);
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  document.execCommand("copy");
+  sel.removeAllRanges();
+  document.body.removeChild(holder);
+  copyStatus.textContent = "copied!";
+  setTimeout(() => copyStatus.textContent = "", 2000);
 });
 
 // ── Info modal ──────────────────────────────────────────────────
