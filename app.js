@@ -170,10 +170,12 @@ btnCopy.addEventListener("click", () => {
     return;
   }
   const html = textToClipboardHtml(text);
-  const type = "text/html";
-  const blob = new Blob([html], { type });
-  const item = new ClipboardItem({ [type]: blob });
-  navigator.clipboard.write([item]).then(() => {
+  navigator.clipboard.write([
+    new ClipboardItem({
+      "text/html": new Blob([html], { type: "text/html" }),
+      "text/plain": new Blob([text], { type: "text/plain" }),
+    }),
+  ]).then(() => {
     copyStatus.textContent = "copied!";
     setTimeout(() => copyStatus.textContent = "", 2000);
   }).catch(() => {
