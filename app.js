@@ -3,6 +3,7 @@ const API = window.location.hostname === "localhost"
   : "https://resolver-server.vercel.app";
 
 let currentMode = "smart";
+let currentFormat = "desktop";
 
 // ── DOM refs ────────────────────────────────────────────────────
 const inputText    = document.getElementById("input-text");
@@ -86,6 +87,26 @@ btnNaive.addEventListener("click", () => {
   btnSmart.classList.remove("active");
 });
 
+// ── Platform/format toggle ──────────────────────────────────────
+const btnDesktop = document.getElementById("btn-desktop");
+const btnMobile  = document.getElementById("btn-mobile");
+
+const FORMAT_KEY = "warera.format";
+currentFormat = localStorage.getItem(FORMAT_KEY) === "mobile" ? "mobile" : "desktop";
+if (currentFormat === "mobile") {
+  btnMobile.classList.add("active");
+  btnDesktop.classList.remove("active");
+}
+
+[btnDesktop, btnMobile].forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentFormat = btn.dataset.format;
+    localStorage.setItem(FORMAT_KEY, currentFormat);
+    btnDesktop.classList.toggle("active", currentFormat === "desktop");
+    btnMobile.classList.toggle("active", currentFormat === "mobile");
+  });
+});
+
 // ── Resolve ─────────────────────────────────────────────────────
 btnResolve.addEventListener("click", doResolve);
 
@@ -114,7 +135,7 @@ async function doResolve() {
     const res = await fetch(`${API}/api/resolve`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, mode: currentMode, blacklist }),
+      body: JSON.stringify({ text, mode: currentMode, blacklist, url_format: currentFormat }),
     });
 
     if (!res.ok) {

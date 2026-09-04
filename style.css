@@ -125,6 +125,16 @@ html, body {
   box-shadow: 0 0 12px var(--red-glow);
 }
 
+.platform-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-input);
+  border-radius: var(--radius);
+  padding: 3px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
 /* ── Separator ─────────────────────────────────────────────────── */
 .separator {
   height: 2px;
@@ -446,6 +456,10 @@ textarea::placeholder {
   }
 
   .mode-toggle {
+    align-self: flex-start;
+  }
+
+  .platform-toggle {
     align-self: flex-start;
   }
 
