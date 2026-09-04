@@ -135,6 +135,13 @@ html, body {
   flex-shrink: 0;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 /* ── Separator ─────────────────────────────────────────────────── */
 .separator {
   height: 2px;
@@ -742,6 +749,16 @@ textarea::placeholder {
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 1px 5px;
+}
+
+.modal-body code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  word-break: break-all;
 }
 
 .modal-sample {
