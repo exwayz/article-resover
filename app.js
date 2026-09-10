@@ -171,6 +171,32 @@ btnClear.addEventListener("click", () => {
   updateShine();
 });
 
+// ── Clipboard HTML helper ───────────────────────────────────────
+const CONTENT_LINK_TYPES = {
+  user: "userId",
+  country: "countryId",
+  region: "regionId",
+  alliance: "allianceId",
+  party: "partyId",
+  mu: "muId",
+};
+
+function textToClipboardHtml(text) {
+  return escapeHtml(text).replace(
+    /(https?:\/\/[^\s]*?)?(\/(?:user|country|region|alliance|party|mu)\/([a-f0-9]+))([^\s]*)/g,
+    (match, prefix, path, id, punct) => {
+      const type = path.split("/")[1];
+      const url = (prefix || "") + path;
+      const key = CONTENT_LINK_TYPES[type];
+      const data = JSON.stringify({ [key]: id, fullMatch: url }).replace(/"/g, "&quot;");
+      const span =
+        `<span data-content-link="" data-content-type="${type}" ` +
+        `data-content-data="${data}" data-original-text="${url}"></span>`;
+      return span + punct;
+    }
+  );
+}
+
 // ── Copy ────────────────────────────────────────────────────────
 btnCopy.addEventListener("click", () => {
   const text = getOutputText();
@@ -179,8 +205,17 @@ btnCopy.addEventListener("click", () => {
     setTimeout(() => copyStatus.textContent = "", 2000);
     return;
   }
-  navigator.clipboard.writeText(text).then(() => {
+  const html = textToClipboardHtml(text);
+  navigator.clipboard.write([
+    new ClipboardItem({
+      "text/html": new Blob([html], { type: "text/html" }),
+      "text/plain": new Blob([text], { type: "text/plain" }),
+    }),
+  ]).then(() => {
     copyStatus.textContent = "copied!";
+    setTimeout(() => copyStatus.textContent = "", 2000);
+  }).catch(() => {
+    copyStatus.textContent = "copy failed";
     setTimeout(() => copyStatus.textContent = "", 2000);
   });
 });
